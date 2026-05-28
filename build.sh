@@ -3,19 +3,19 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-BUILD_DIR="$SCRIPT_DIR/build"
 SIM86_DIR="$SCRIPT_DIR/sim86"
+BUILD_DIR="$SCRIPT_DIR/build"
 
-mkdir -p "$BUILD_DIR"
 mkdir -p "$SIM86_DIR/shared"
+mkdir -p "$BUILD_DIR"
 
 pushd "$BUILD_DIR"
 
 clang -g "$SIM86_DIR/sim86.cpp" \
-    -o sim86_clang_debug
+    -o sim86
 
-clang -O3 -g "$SIM86_DIR/sim86.cpp" \
-    -o sim86_clang_release
+#clang -O3 -g "$SIM86_DIR/sim86.cpp" \
+#    -o sim86
 
 #clang -P -E "$SIM86_DIR/sim86_lib.h" \
 #    | clang-format --style="Microsoft" \
